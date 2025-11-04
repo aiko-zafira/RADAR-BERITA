@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login - Mytic News</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h2>Mytic News</h2>
+  <button onclick="logout()" style="background:#fff;color:#069CBE;border-radius:5px;padding:5px 10px;">Logout</button>
+
+</header>
+
+<div style="max-width:400px;margin:auto;padding:20px;">
+  <h2>Login</h2>
+  <input type="text" id="username" placeholder="Masukkan nama...">
+  <button onclick="login()">Masuk</button>
+</div>
+
+<script>
+function login(){
+  const nama = document.getElementById("username").value;
+  if(nama.trim() === "") return alert("Nama tidak boleh kosong!");
+  localStorage.setItem("user", nama);
+  window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>

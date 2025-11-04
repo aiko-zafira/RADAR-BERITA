@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Berita - Mytic News</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h2>Mytic News</h2>
+  <button onclick="logout()" style="background:#fff;color:#069CBE;border-radius:5px;padding:5px 10px;">Logout</button>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="berita.html">Berita</a>
+    <a href="tentang.html">Tentang</a>
+    <a href="kontak.html">Kontak</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Daftar Berita</h1>
+</section>
+
+<div style="padding:20px; text-align:center;">
+  <input type="text" id="search" placeholder="Cari berita...">
+</div>
+
+<div id="berita-list" class="card-container"></div>
+
+<footer>
+  <p>© 2025 Mytic News</p>
+</footer>
+
+<script src="data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
+<script>
+if(!localStorage.getItem("user")){
+  window.location.href = "login.html";
+}
+
+function logout(){
+  localStorage.removeItem("user");
+  window.location.href = "login.html";
+}
+</script>

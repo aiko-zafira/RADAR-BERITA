@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kontak - Mytic News</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h2>Mytic News</h2>
+  <button onclick="logout()" style="background:#fff;color:#069CBE;border-radius:5px;padding:5px 10px;">Logout</button>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="berita.html">Berita</a>
+    <a href="tentang.html">Tentang</a>
+    <a href="kontak.html">Kontak</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Kontak Kami</h1>
+</section>
+
+<div style="max-width:600px; margin:auto; padding:20px;">
+  <form id="contactForm">
+    <label>Nama</label>
+    <input type="text" id="nama">
+    <label>Email</label>
+    <input type="text" id="email">
+    <label>Pesan</label>
+    <textarea id="pesan"></textarea>
+    <button type="submit">Kirim</button>
+  </form>
+</div>
+
+<footer>
+  <p>© 2025 Mytic News</p>
+</footer>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  alert("Pesan berhasil dikirim!");
+});
+</script>
+
+</body>
+</html>
+<script>
+if(!localStorage.getItem("user")){
+  window.location.href = "login.html";
+}
+
+function logout(){
+  localStorage.removeItem("user");
+  window.location.href = "login.html";
+}
+</script>

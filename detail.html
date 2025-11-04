@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Detail Berita - Mytic News</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h2>Mytic News</h2>
+  <button onclick="logout()" style="background:#fff;color:#069CBE;border-radius:5px;padding:5px 10px;">Logout</button>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="berita.html">Berita</a>
+    <a href="tentang.html">Tentang</a>
+    <a href="kontak.html">Kontak</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1 id="judul"></h1>
+</section>
+
+<div style="max-width:700px; margin:auto; padding:30px;">
+  <p id="isi"></p>
+  <img id="gambar" style="width:100%; border-radius:12px; margin:20px 0;">
+  <h3>Komentar:</h3>
+<div id="comment-list"></div>
+
+<textarea id="comment-input" placeholder="Tulis komentar..."></textarea>
+<button onclick="kirimKomentar()">Kirim</button>
+
+  <button onclick="history.back()">← Kembali</button>
+</div>
+
+<footer>
+  <p>© 2025 Mytic News</p>
+</footer>
+
+<script src="data.js"></script>
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+const index = urlParams.get("berita");
+
+document.getElementById("gambar").src = beritaList[index].gambar;
+document.getElementById("judul").innerHTML = beritaList[index].judul;
+document.getElementById("isi").innerHTML = beritaList[index].detail.replace(/\n/g, "<br>");
+</script>
+
+</body>
+</html>
+<script>
+if(!localStorage.getItem("user")){
+  window.location.href = "login.html";
+}
+
+function logout(){
+  localStorage.removeItem("user");
+  window.location.href = "login.html";
+}
+let komentar = JSON.parse(localStorage.getItem("komentar-" + index)) || [];
+
+function tampilKomentar(){
+  const list = document.getElementById("comment-list");
+  list.innerHTML = "";
+  komentar.forEach(k => {
+    list.innerHTML += `<p>• ${k}</p>`;
+  });
+}
+
+function kirimKomentar(){
+  const isi = document.getElementById("comment-input").value;
+  if(isi.trim() === "") return;
+  komentar.push(isi);
+  localStorage.setItem("komentar-" + index, JSON.stringify(komentar));
+  document.getElementById("comment-input").value = "";
+  tampilKomentar();
+}
+
+tampilKomentar();
+</script>

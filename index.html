@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home - Mytic News</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h2>Mytic News</h2>
+  <button onclick="logout()" style="background:#fff;color:#069CBE;border-radius:5px;padding:5px 10px;">Logout</button>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="berita.html">Berita</a>
+    <a href="tentang.html">Tentang</a>
+    <a href="kontak.html">Kontak</a>
+  </nav>
+</header>
+
+<section class="hero slider">
+  <h1 id="slider-text">Selamat Datang di Mytic News</h1>
+  <p>Sumber berita terpercaya setiap hari.</p>
+</section>
+
+<script>
+const textList = [
+  "Selamat Datang di Mytic News",
+  "Update Berita Setiap Hari",
+  "Informasi Terpercaya!"
+];
+
+let indexText = 0;
+
+setInterval(() => {
+  indexText = (indexText + 1) % textList.length;
+  document.getElementById("slider-text").innerText = textList[indexText];
+}, 2500);
+</script>
+
+
+<div class="card-container">
+  <div class="card"><h3>Teknologi</h3><p>Berita update teknologi.</p></div>
+  <div class="card"><h3>Gaming</h3><p>Berita terbaru seputar game.</p></div>
+  <div class="card"><h3>Trending</h3><p>Isi berita viral hari ini.</p></div>
+</div>
+
+<footer>
+  <p>© 2025 Mytic News</p>
+</footer>
+
+</body>
+</html>
+<script>
+if(!localStorage.getItem("user")){
+  window.location.href = "login.html";
+}
+
+function logout(){
+  localStorage.removeItem("user");
+  window.location.href = "login.html";
+}
+</script>
